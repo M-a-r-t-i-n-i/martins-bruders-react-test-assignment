@@ -1,0 +1,349 @@
+☐ create folder structure
+☐ create components and sub-components
+
+✔ create MainFrame component @done (1.11.2022. 19:35:11)
+
+✔ * ☐ create Category component (child of MainFrame) @done (1.11.2022. 19:35:50)
+    ☐ [Header]
+    ☐ [TitleHeading]
+    ☐ [SubtitleTitleHeading]
+    ☐ create ProductCard component (child of Category) A
+        ☐ [ProductImage]
+        ☐ [AddToCartButton] 
+        ✔ create LayoutSpacerBase component (child of MainFrame) @done (1.11.2022. 19:36:18)
+        ☐ [ItemTitleAndPrice]
+    ☐ [ProductCard] B
+    ☐ [ProductCard]
+    ☐ [ProductCard]
+    ☐ [ProductCard]
+
+
+✔ create Button component (child of MainFrame) @done (1.11.2022. 19:37:49)
+    ✔ create OrderButton component (child of Button) @done (1.11.2022. 19:38:33)
+    ✔ create CurrencyButton component (child of Button) @done (1.11.2022. 19:38:30)
+    ✔ create AddToCartButton component (child of Button) @done (1.11.2022. 19:38:27)
+
+✔ create Header component (child of MainFrame) @done (1.11.2022. 19:39:20)
+    ✔ create Logo component (child of Header) @done (1.11.2022. 19:47:05)
+    ✔ create Navigation component (child of Header) @done (1.11.2022. 19:47:07)
+        ✔ create ShopByButton Button (child of Button) @done (1.11.2022. 19:48:50)
+        ☐ [ShopByButton] Women
+        ☐ [ShopByButton] Men
+        ☐ [ShopByButton] Kids
+    ✔ create HeaderActionContainer component (child of Header) @done (1.11.2022. 19:47:11)
+
+✔ * ☐ create PDP component (child of MainFrame) @done (1.11.2022. 19:49:15)
+    ☐ [CartOverview]
+        ✔ create ProductSelection component (child of PDP) @done (1.11.2022. 19:49:52)
+        ☐ [ProductImage]
+        ☐ [ItemDescriptionPlaceholder]
+            ☐ [ItemTitleAndPrice]
+                ☐ [TitleHeading]
+                ☐ [SubtitleTitleHeading]
+                ☐ [Price]
+            ☐ [ItemSizeSelector]
+            ☐ [ItemColorSelector]
+        ☐ [AddToCartButton]
+        ☐ [ItemInfo]
+
+
+
+✔ * ☐ create CurrencySwitcher component (child of Header) @done (1.11.2022. 19:50:39)
+    ✔ create CurrencyMenu component (child of CurrencySwitcher) @done (1.11.2022. 19:50:50)
+
+✔ * ☐ create Cart component (child of MainFrame) @done (1.11.2022. 19:51:01)
+
+✔ * ☐ create CartOverlay component (child of MainFrame) @done (1.11.2022. 19:58:21)
+
+✔ create TitleHeading component (child of MainFrame) @done (1.11.2022. 19:59:02)
+    ✔ create SubtitleTitleHeading component (child of TitleHeading) @done (1.11.2022. 19:59:05)
+    
+✔ create ItemInfo component (child of MainFrame) @done (1.11.2022. 19:59:23)
+
+✔ create CartOverview component (child of Cart) @done (1.11.2022. 20:00:04)
+    ☐ [TitleHeading]
+    ✔ create ChosenItemsFrame component (child of CartOverview) @done (1.11.2022. 20:00:30)
+        ✔ create ItemPlaceholder component (child of MainFrame) @done (1.11.2022. 20:00:54)
+            ✔ create ProductImage component (child of MainFrame) @done (1.11.2022. 20:01:10)
+            ✔ create Counter component (child of MainFrame) @done (1.11.2022. 20:02:30)
+                ✔ create PlusButton component (child of Button) @done (1.11.2022. 20:05:03)
+                ✔ create MinusButton component (child of Button) @done (1.11.2022. 20:05:01)
+                ✔ create CounterSizeNumber component (child of Counter) @done (1.11.2022. 20:02:34)
+            ✔ create ItemDescriptionPlaceholder component (child of MainFrame) @done (1.11.2022. 20:05:21)
+                ✔ create ItemTitleAndPrice component (child of MainFrame) @done (1.11.2022. 20:05:34)
+                    ☐ [TitleHeading]
+                    ☐ [SubtitleTitleHeading]
+                    ☐ create Price component
+                ✔ create ItemSizeSelector component (child of MainFrame) @done (1.11.2022. 20:06:12)
+                    ☐ [TitleHeading]
+                    ☐ create ProductSizes component 
+                ✔ create ItemColorSelector component (child of MainFrame) @done (1.11.2022. 20:06:16)
+                    ☐ [TitleHeading]
+                    ☐ create ProductColors component 
+        ☐ [ItemPlaceholder]
+            ☐ [ProductImage]
+            ☐ [Counter]
+            ☐ [ItemDescriptionPlaceholder]
+                ☐ [ItemTitleAndPrice]
+                ☐ [ItemSizeSelector]
+                ☐ [ItemColorSelector]
+    ☐ [TotalsFrame]
+        ☐ [TotalSumFrame]
+    ✔ create CartActions component (child of Cart) @done (1.11.2022. 20:06:48)
+        ✔ create ViewBagButton (child of Button) @done (1.11.2022. 20:07:14)
+        ✔ create CheckOutButton (child of Button) @done (1.11.2022. 20:07:11)
+
+✔ create CartItemImage component (child of MainFrame) @done (1.11.2022. 20:07:28)
+    ✔ create ImageSwitcherButtonRight  (child of Button) @done (1.11.2022. 20:07:46)
+    ✔ create ImageSwitcherButtonLeft (child of Button) @done (1.11.2022. 20:07:44)
+
+✔ create TotalsFrame (child of Cart) @done (1.11.2022. 20:08:02)
+    ✔ create TotalSumFrame (child of TotalsFrame) @done (1.11.2022. 20:08:52)
+    ✔ create TotalTaxFrame (child of TotalsFrame) @done (1.11.2022. 20:08:50)
+    ✔ create TotalQuantityFrame (child of TotalsFrame) @done (1.11.2022. 20:08:48)
+
+
+*********************************
+
+- Category (rectangle 2134) --> [Category]
+	- Header (Menu bar) --> [Header]
+		- LOGO (looks like a refresh button or return to top) --> [Logo]
+		- Navigation (shop by) --> [Navigation]
+			- Men --> [ShopByButton]
+			- Women --> [ShopByButton]
+			- Kids --> [ShopByButton]
+		- Actions --> [HeaderActionContainer]
+			- Currency switcher --> [CurrencySwitcher]
+			- Cart --> [Cart]
+	- Title ("Category name" heading) --> [TitleHeading]
+	- Product Card A --> [ProductCard]
+		- Product Card elements
+			- Item image --> [ProductImage]
+			- Add to cart button --> [AddToCartButton]
+			- layout spacer base (?) --> [LayoutSpacerBase]
+			- Product description --> [ItemTitleAndPrice]
+				- Title --> [TitleHeading]
+                - [SubtitleTitleHeading]
+				- Price --> [Price]
+	- Product Card B --> [ProductCard]
+		- Product Card elements
+			- Item image --> [ProductImage]
+			- Add to cart button --> [AddToCartButton]
+			- layout spacer base (?)  --> [LayoutSpacerBase]
+			- Product description --> [ItemTitleAndPrice]
+				- Title --> [TitleHeading]
+                - [SubtitleTitleHeading]
+				- Price --> [Price]
+	- Product Card C --> [ProductCard]
+		- Product Card elements
+			- Item image --> [ProductImage]
+			- Add to cart button --> [AddToCartButton]
+			- layout spacer base (?)  --> [LayoutSpacerBase]
+			- Product description --> [ItemTitleAndPrice]
+				- Title  --> [TitleHeading]
+                - [SubtitleTitleHeading]
+				- Price --> [Price]
+	- Product Card D --> [ProductCard]
+		- Product Card elements
+			- Item image --> [ProductImage]
+			- Add to cart button --> [AddToCartButton]
+			- layout spacer base (?) --> [LayoutSpacerBase]
+			- Product description --> [ItemTitleAndPrice]
+				- Title --> [TitleHeading]
+                - [SubtitleTitleHeading]
+				- Price --> [Price]
+	- Product Card E --> [ProductCard]
+		- Product Card elements
+			- Item image --> [ProductImage]
+			- Add to cart button --> [AddToCartButton]
+			- layout spacer base (?) --> [LayoutSpacerBase]
+			- Product description --> [ItemTitleAndPrice]
+				- Title --> [TitleHeading]
+                - [SubtitleTitleHeading]
+				- Price --> [Price]
+				  
+
+- Cart Overlay (rectangle 2134) --> [CartOverlay]
+[Header], [TitleHeading], [ProductCard] components mentioned in Category parent component
+
+	- Frame of the Cart Overlay -->  [CartOverview]
+		- Cart overview -->
+			- Title --> [TitleHeading]
+			- Chosen items frame --> [ChosenItemsFrame]
+				- An item --> [ItemPlaceholder]
+					- Product image --> [ProductImage]
+					- Counter --> [Counter]
+						- + --> [PlusButton]
+						- - --> [MinusButton]
+						- Title of counter size (number) --> [CounterSizeNumber]
+					- Elements of item in bag --> [ItemDescriptionPlaceholder]
+						- Item title and price --> [ItemTitleAndPrice]
+							- Item title --> [TitleHeading]
+                            - [SubtitleTitleHeading]
+							- Item price --> [Price]
+						- Item size selector --> [ItemSizeSelector]
+							- Title of selector (Size) --> [TitleHeading]
+							- Available Size --> [ProductSizes]
+								-     - XS
+								-     - S
+								-     - M
+								-     - L
+						- Item color selector --> [ItemColorSelector]
+							- Title of selector (Color)  --> [TitleHeading]
+							- Available Color --> [ProductColors]
+								-     - Green 
+								-     - Beige
+								-     - Maroon
+				- Another item --> [ItemPlaceholder]
+					- Product image --> [ProductImage]
+					- Counter --> [Counter]
+							- + --> [PlusButton]
+							- - --> [MinusButton]
+							- Title of counter size (number) --> [CounterSizeNumber]
+					- Elements of item in bag --> [ItemDescriptionPlaceholder]
+						- Item title and price --> [ItemTitleAndPrice]
+							- Item title --> [TitleHeading]
+                            - [SubtitleTitleHeading]
+							- Item price --> [Price]
+						- Item size selector --> [ItemSizeSelector]
+							- Title of selector --> [TitleHeading]
+							- Available Size --> [ProductSizes]
+								-     - S
+								-     - M
+						- Item color selector --> [ItemColorSelector]
+							- Title of selector --> [TitleHeading]
+							- Available Color --> [ProductColors]
+								-     - Black
+								-     - Orange
+								-     - Magenta
+        - TotalsFrame --> [TotalsFrame]
+            - Total sum frame --> [TotalSumFrame]
+                - Title --> [TitleHeading]
+                - Price --> [Price]
+
+		- Actions   --> [CartActions]
+			- View Bag button --> [ViewBagButton]
+				- button name 
+			- Checkout button --> [CheckOutButton]
+				- button name
+	- Rectangle holding everything together, except frame of the Cart Overlay and Header (Rectangle 692) [CartOverview]
+
+
+- Currency Switcher (rectangle 2134) --> [CurrencySwitcher]
+[Header], [TitleHeading], [ProductCard] components mentioned in [MainFrame]
+
+	- Frame of the Currency Menu --> [CurrencyMenu] (the current Currency and Shopping cart components are included in the Header (located in the [MainFrame] component))
+		- EUR label --> [CurrencyButton]
+		- $ label --> [CurrencyButton]
+		- YEN label --> [CurrencyButton]
+
+
+- PDP (rectangle 2134) --> [MainFrame]
+[Header] component mentioned in [MainFrame] parent component. No Title and Product Card. This is a window for product details that opens over the main window (?)
+    - Minimized product images  --> [ProductSelection]
+	- Product details - main section --> [CartOverview]
+		- Item Image --> [ProductImage]
+		- Product description --> [ItemDescriptionPlaceholder]
+			- Title --> [TitleHeading]
+			- Product category --> [SubtitleTitleHeading]
+        - Item size selector  --> [ItemSizeSelector]
+            - Available Size --> [ProductSizes]
+                - Size title --> [TitleHeading]
+                - XS
+                - S
+                - M
+                - L
+        - Price section --> (?)
+				- Item price --> [Price]
+        - Color section --> [ItemColorSelector]
+            - Available Color --> [ProductColors]
+                - Grey
+                - Black
+                - Green
+        - Add to Cart button --> [AddToCartButton]
+				- Button label
+        - Description text --> [ItemInfo]
+
+
+- Cart (rectangle 2134) --> [Cart]
+[Header] and [TitleHeading] components mentioned in Category parent component. No Product Card. This also is a window for product details that opens over the main window (?)
+
+- Selected Items - main section --> [CartOverview]
+    - Cart --> [TitleHeading]
+
+    -  [ChosenItemsFrame]
+
+        - [ItemPlaceholder]
+            - First Item description --> [ItemDescriptionPlaceholder]
+                - [ItemTitleAndPrice]
+                    - Title --> [TitleHeading]
+                    - Product category --> [SubtitleTitleHeading]
+                    - Item price --> [Price]
+                - Item size selector  --> [ItemSizeSelector]
+                        - Title of selector (Size) --> [TitleHeading]
+                        - Available Size --> [ProductSizes]
+                            - XS
+                            - S
+                            - M
+                            - L
+                    - Item color selector --> [ItemColorSelector]
+                        - Title of Color (Color) --> [TitleHeading]
+                        - Available Color --> [ProductColors]
+                            - Grey
+                            - Black
+                            - Green
+            - Counter --> [Counter]
+                - + --> [PlusButton]
+                - - --> [MinusButton]
+                - Title of counter size (number)  --> [CounterSizeNumber]
+
+            - Item Image section --> [CartItemImage]
+                - Item Image --> [ProductImage]
+                - Image switcher button section --> need separate section? 
+                    - Image switcher button right -->  [ImageSwitcherButtonRight]
+                    - Image switcher button left --> [ImageSwitcherButtonLeft]
+
+         - [ItemPlaceholder]
+            - Second Item description 
+                    - Title --> [TitleHeading]
+                    - Product category --> [SubtitleTitleHeading]
+                    - Item price --> [Price]
+                    - Item size selector  --> [ItemSizeSelector]
+                        - Title of selector (Size) --> [TitleHeading]
+                        - Available Size --> [ProductSizes]
+                            - S
+                            - M
+                    - Item color selector --> [ItemColorSelector]
+                        - Title of Color (Color) --> [TitleHeading]
+                        - Available Color --> [ProductColors]
+                            - Magenta
+                            - Black
+                            - Orange
+                - Counter --> [Counter]
+                    - + --> [PlusButton]
+                    - - --> [MinusButton]
+                    - Title of counter size (number) --> [CounterSizeNumber]
+                - Item Image section --> [CartItemImage]
+                    - Item Image --> [ProductImage]
+                    - Image switcher button section --> need separate section? 
+                        - Image switcher button right -->  [ImageSwitcherButtonRight]
+                        - Image switcher button left --> [ImageSwitcherButtonLeft]
+
+    - Totals (sum and items) --> [TotalsFrame]
+            - Tax
+                - Title --> [TitleHeading]
+                - Tax sum --> [Price]
+            - Quantity 
+                - Title --> [TitleHeading]
+                - Quantity sum --> [CounterSizeNumber] 
+            - Total Sum frame --> [TotalSumFrame]
+                - Title  --> [TitleHeading]
+                - Amount of Total Sum  --> [Price]
+
+
+    - Order button --> [OrderButton]
+
+[Category], [CartOverlay], [CurrencySwitcher], PDP, [Cart] are parent components. Children of  [MainFrame]
+
+
+
