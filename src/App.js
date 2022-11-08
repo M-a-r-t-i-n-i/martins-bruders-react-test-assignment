@@ -1,21 +1,191 @@
 import "./App.css";
+import React from "react";
+
+// GraphQL
+import { gql } from "@apollo/client";
+import { Query } from "@apollo/client/react/components";
 
 // Components
-import MainFrame from "./components/MainFrame/MainFrame";
+import MainFrameClass from "./components/MainFrame/MainFrame";
+import ButtonClass from "./components/MainFrame/Button/Button";
+import Header from "./components/MainFrame/Header/Header";
+import Category from "./components/MainFrame/Category";
 
-function App() {
-  return (
-    <main>
-      <section className="App">
-        <header className="App-header">
-          <p>oki doki </p>
-        </header>
-      </section>
-      <section className="MainFrame">
-        <MainFrame />
-      </section>
-    </main>
-  );
+// Constants
+import { BUTTON_FUNCTIONALITY, LIMIT_IMPORT } from "./constants";
+
+const testDrive = gql`
+  query {
+    currencies {
+      label
+      symbol
+    }
+    categories {
+      name
+      products {
+        id
+        name
+        inStock
+        description
+        category
+        attributes {
+          id
+          name
+          type
+          items {
+            displayValue
+            value
+            id
+          }
+        }
+        brand
+        prices {
+          amount
+          currency {
+            symbol
+          }
+        }
+        gallery
+      }
+    }
+
+    product(id: "apple-airtag") {
+      name
+      inStock
+      gallery
+      description
+      category
+      attributes {
+        id
+        name
+        type
+        items {
+          displayValue
+          value
+          id
+        }
+      }
+      prices {
+        currency {
+          label
+          symbol
+        }
+        amount
+      }
+      brand
+    }
+  }
+`;
+
+class App extends React.Component {
+  render() {
+    return (
+      <main>
+        {/* QUERY RETURN BLOCK */}
+        <Query query={testDrive}>
+          {({ loading, error, data }) => {
+            console.log(data);
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error}</p>;
+            return data.categories.map((category) => (
+              <>
+                <div>{category.name}</div>
+                {/* <div>{category.products}</div> */}
+              </>
+            ));
+          }}
+        </Query>
+
+        <Query query={testDrive}>
+          {({ loading, error, data }) => {
+            console.log(data);
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error}</p>;
+            return data.currencies.map((currency) => (
+              <>
+                <div>{currency.label}</div>
+                <div>{currency.symbol}</div>
+              </>
+            ));
+          }}
+        </Query>
+
+        <br></br>
+        <Query query={testDrive}>
+          {({ loading, error, data }) => {
+            console.log(data);
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error}</p>;
+            return data.product["name"];
+          }}
+        </Query>
+
+        <Query query={testDrive}>
+          {({ loading, error, data }) => {
+            console.log(data);
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error}</p>;
+            return data.product["gallery"];
+          }}
+        </Query>
+
+        <Query query={testDrive}>
+          {({ loading, error, data }) => {
+            console.log(data);
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error}</p>;
+            return data.product["category"];
+          }}
+        </Query>
+
+        <Query query={testDrive}>
+          {({ loading, error, data }) => {
+            console.log(data);
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error}</p>;
+            return data.product["brand"];
+          }}
+        </Query>
+
+        <Query query={testDrive}>
+          {({ loading, error, data }) => {
+            console.log(data);
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error}</p>;
+
+            return data.product["description"];
+
+            // return data.product.map((product) => (
+            //   <div key={product.id} value={product.name}></div>
+            // ));
+
+            // return data.product.map((product) => (
+            //   <div key={product.id}>
+            //     <div>{product.name}</div>
+            //     <div>{product.description}</div>
+            //   </div>
+            // ));
+          }}
+        </Query>
+
+        <section className="App">
+          <Header />
+
+          <Category />
+          <header className="App-header">
+            <p>dispersed functionalities below </p>
+          </header>
+        </section>
+        <section className="MainFrame">
+          <MainFrameClass type="Zen" counter={0} limit={LIMIT_IMPORT} />
+          <ButtonClass
+            type="functionality"
+            functionality={BUTTON_FUNCTIONALITY}
+          />
+        </section>
+      </main>
+    );
+  }
 }
 
 export default App;

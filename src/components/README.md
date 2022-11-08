@@ -4,10 +4,10 @@
 
 ### List of components
 
-- might need diversify TitleHeading components (child of MainFrame). I.e. One TitleHeading parent component, with XXTitle children, according to the necessity and attributes of that certain title.
+- I might need diversify TitleHeading components (child of MainFrame). I.e. One TitleHeading parent component, with XXTitle children, according to the necessity and attributes of that certain title.
 - might need to rethink if all images have the switcher buttons, but hidden in most; or only for images in the cart
 - might need to rethink if all totals are part of the TotalsFrame, or special component in Cart for the various totals there.
-- consider putting ItemInfo in the same hierarchy as ItemDescriptionPlaceholder.
+- need to consider putting ItemInfo in the same hierarchy as ItemDescriptionPlaceholder.
 - might need to rethink if the Price component can be a part of the ItemTitleAndPrice component, of need to be separate to be able to have a separate location (detached from other ItemTitleAndPrice components) in the PDP component.
 
 ### Organization of site by components
