@@ -14,7 +14,7 @@ import Category from "./components/MainFrame/Category";
 // Constants
 import { BUTTON_FUNCTIONALITY, LIMIT_IMPORT } from "./constants";
 
-const testDrive = gql`
+const testGQL = gql`
   query {
     currencies {
       label
@@ -77,12 +77,63 @@ const testDrive = gql`
   }
 `;
 
+const testGetProduct = gql`
+  query product($productId: ID!) {
+    product(id: $productId) {
+      name
+      inStock
+      gallery
+      description
+      category
+      attributes {
+        id
+        name
+        type
+        items {
+          displayValue
+          value
+          id
+        }
+      }
+      prices {
+        currency {
+          label
+          symbol
+        }
+        amount
+      }
+      brand
+    }
+  }
+`;
+
 class App extends React.Component {
   render() {
     return (
       <main>
+        {/* QUERY for testGetProduct  */}
+        <Query query={testGetProduct}>
+          {({ loading, error, data }) => {
+            console.log(data);
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error}</p>;
+            return data.product;
+          }}
+        </Query>
+        {/* 
+        // return data.product.map((product) => (
+            //   <div key={product.id} value={product.name}></div>
+            // ));
+
+            // return data.product.map((product) => (
+            //   <div key={product.id}>
+            //     <div>{product.name}</div>
+            //     <div>{product.description}</div>
+            //   </div>
+            // )); */}
+
         {/* QUERY RETURN BLOCK */}
-        <Query query={testDrive}>
+        <Query query={testGQL}>
           {({ loading, error, data }) => {
             console.log(data);
             if (loading) return <p>Loading...</p>;
@@ -95,8 +146,9 @@ class App extends React.Component {
             ));
           }}
         </Query>
-
-        <Query query={testDrive}>
+        <br></br>
+        <br></br>
+        <Query query={testGQL}>
           {({ loading, error, data }) => {
             console.log(data);
             if (loading) return <p>Loading...</p>;
@@ -109,9 +161,9 @@ class App extends React.Component {
             ));
           }}
         </Query>
-
         <br></br>
-        <Query query={testDrive}>
+        <br></br>
+        <Query query={testGQL}>
           {({ loading, error, data }) => {
             console.log(data);
             if (loading) return <p>Loading...</p>;
@@ -119,8 +171,9 @@ class App extends React.Component {
             return data.product["name"];
           }}
         </Query>
-
-        <Query query={testDrive}>
+        <br></br>
+        <br></br>
+        <Query query={testGQL}>
           {({ loading, error, data }) => {
             console.log(data);
             if (loading) return <p>Loading...</p>;
@@ -128,8 +181,9 @@ class App extends React.Component {
             return data.product["gallery"];
           }}
         </Query>
-
-        <Query query={testDrive}>
+        <br></br>
+        <br></br>
+        <Query query={testGQL}>
           {({ loading, error, data }) => {
             console.log(data);
             if (loading) return <p>Loading...</p>;
@@ -137,8 +191,9 @@ class App extends React.Component {
             return data.product["category"];
           }}
         </Query>
-
-        <Query query={testDrive}>
+        <br></br>
+        <br></br>
+        <Query query={testGQL}>
           {({ loading, error, data }) => {
             console.log(data);
             if (loading) return <p>Loading...</p>;
@@ -146,8 +201,9 @@ class App extends React.Component {
             return data.product["brand"];
           }}
         </Query>
-
-        <Query query={testDrive}>
+        <br></br>
+        <br></br>
+        <Query query={testGQL}>
           {({ loading, error, data }) => {
             console.log(data);
             if (loading) return <p>Loading...</p>;
