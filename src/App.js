@@ -78,31 +78,24 @@ const testGQL = gql`
 `;
 
 const testGetProduct = gql`
-  query product($productId: ID!) {
-    product(id: $productId) {
+  query FetchProductById($id: String!) {
+    product(id: $id) {
+      id
       name
       inStock
+      brand
       gallery
       description
-      category
       attributes {
-        id
         name
+        id
         type
         items {
-          displayValue
-          value
           id
+          value
+          displayValue
         }
       }
-      prices {
-        currency {
-          label
-          symbol
-        }
-        amount
-      }
-      brand
     }
   }
 `;
@@ -112,32 +105,29 @@ class App extends React.Component {
     return (
       <main>
         {/* QUERY for testGetProduct  */}
-        <Query query={testGetProduct}>
+        {/* <Query query={testGetProduct}>
           {({ loading, error, data }) => {
             console.log(data);
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: {error}</p>;
-            return data.product;
+            return { id: "ps-5" };
+
+            // return data.product["description"];
           }}
-        </Query>
-        {/* 
-        // return data.product.map((product) => (
-            //   <div key={product.id} value={product.name}></div>
-            // ));
+        </Query> */}
+        {/* {"id"}: {"ps-5"} */}
 
-            // return data.product.map((product) => (
-            //   <div key={product.id}>
-            //     <div>{product.name}</div>
-            //     <div>{product.description}</div>
-            //   </div>
-            // )); */}
-
-        {/* QUERY RETURN BLOCK */}
+        {/* QUERY testGQL RETURN BLOCK */}
         <Query query={testGQL}>
           {({ loading, error, data }) => {
             console.log(data);
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: {error}</p>;
+
+            // return data.categories.map((category) =>
+            //   category.products.map((product) => <p>product.name</p>)
+            // );
+
             return data.categories.map((category) => (
               <>
                 <div>{category.name}</div>
@@ -211,6 +201,13 @@ class App extends React.Component {
 
             return data.product["description"];
 
+            // return data.product[""](
+            //   <>
+            //     <div key="{name}">{product.name}</div>
+            //     <div key="{category}">{product.category}</div>
+            //   </>
+            // );
+
             // return data.product.map((product) => (
             //   <div key={product.id} value={product.name}></div>
             // ));
@@ -223,7 +220,6 @@ class App extends React.Component {
             // ));
           }}
         </Query>
-
         <section className="App">
           <Header />
 
