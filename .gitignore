@@ -27,3 +27,6 @@ yarn-error.log*
 
 #snippets
 /src/snippets.js
+
+#backup files 
+/src/App(org).js

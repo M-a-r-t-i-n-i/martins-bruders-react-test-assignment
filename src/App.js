@@ -1,243 +1,116 @@
-import "./App.css";
-import React from "react";
+import { PureComponent } from "react";
+import { Route, Routes } from "react-router-dom";
 
-// GraphQL
-import { gql } from "@apollo/client";
-import { Query } from "@apollo/client/react/components";
+// API
+import {
+  ApiFetchAllCategories,
+  ApiFetchAllCurrencies,
+  ApifetchProductsByCategory,
+  ApifetchProductById,
+} from "./queries";
+
+// Styling
+import "./App.css";
 
 // Components
-import MainFrameClass from "./components/MainFrame/MainFrame";
-import ButtonClass from "./components/MainFrame/Button/Button";
+import CartPage from "./components/cart/CartPage";
+import NotFoundPage from "./components/ui/NotFoundPage";
+import ProductListingPage from "./components/products/ProductListingPage";
+import ProductCard from "./components/products/ProductCard";
 import Header from "./components/MainFrame/Header/Header";
-import Category from "./components/MainFrame/Category";
 
-// Constants
-import { BUTTON_FUNCTIONALITY, LIMIT_IMPORT } from "./constants";
-
-const testGQL = gql`
-  query {
-    currencies {
-      label
-      symbol
-    }
-    categories {
-      name
-      products {
-        id
-        name
-        inStock
-        description
-        category
-        attributes {
-          id
-          name
-          type
-          items {
-            displayValue
-            value
-            id
-          }
-        }
-        brand
-        prices {
-          amount
-          currency {
-            symbol
-          }
-        }
-        gallery
-      }
-    }
-
-    product(id: "apple-airtag") {
-      name
-      inStock
-      gallery
-      description
-      category
-      attributes {
-        id
-        name
-        type
-        items {
-          displayValue
-          value
-          id
-        }
-      }
-      prices {
-        currency {
-          label
-          symbol
-        }
-        amount
-      }
-      brand
-    }
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      categories: [],
+      currencies: [],
+      products: [],
+      nameAndDescription: [],
+    };
   }
-`;
 
-const testGetProduct = gql`
-  query FetchProductById($id: String!) {
-    product(id: $id) {
-      id
-      name
-      inStock
-      brand
-      gallery
-      description
-      attributes {
-        name
-        id
-        type
-        items {
-          id
-          value
-          displayValue
-        }
-      }
-    }
+  async componentDidMount() {
+    const { data } = await ApiFetchAllCategories();
+    const { data: currencyData } = await ApiFetchAllCurrencies();
+    const { data: productsData } = await ApifetchProductsByCategory("all");
+    console.log("Data from ApiFetchAllCategories", data);
+
+    console.log("2", productsData);
+    this.setState({ categories: data.categories });
+    this.setState({ currencies: currencyData.currencies });
+    this.setState({ products: productsData.category.products });
+    // this.setState({
+    //   nameAndDescription: productsData.category.products.map(
+    //     (product) => {{name: product.name, description: product.description}}
+    //   ),
+    // });
   }
-`;
 
-class App extends React.Component {
+  /* <li {...currency.symbol}>{currency.label}</li>
+                    <li className="currency-counter">{currency.symbol}</li> */
+
   render() {
+    console.log(this.state.products);
+    console.log(this.state.nameAndDescription);
     return (
-      <main>
-        {/* QUERY for testGetProduct  */}
-        {/* <Query query={testGetProduct}>
-          {({ loading, error, data }) => {
-            console.log(data);
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error}</p>;
-            return { id: "ps-5" };
+      <>
+        <Header />
+        <ul>
+          {this.state.products.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </ul>
+        <ul>
+          {this.state.categories.map((category) => (
+            <div>{category.name}</div>
+          ))}
+        </ul>
+        <select name="currency-switcher" id="currency-switcher">
+          {this.state.currencies.map((currency) => (
+            <option value={currency.label}>
+              {currency.symbol} {currency.label}
+            </option>
+          ))}
+        </select>
+        <Routes>
+          <Route path="/" element={<ul></ul>} />
 
-            // return data.product["description"];
-          }}
-        </Query> */}
-        {/* {"id"}: {"ps-5"} */}
-
-        {/* QUERY testGQL RETURN BLOCK */}
-        <Query query={testGQL}>
-          {({ loading, error, data }) => {
-            console.log(data);
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error}</p>;
-
-            // return data.categories.map((category) =>
-            //   category.products.map((product) => <p>product.name</p>)
-            // );
-
-            return data.categories.map((category) => (
-              <>
-                <div>{category.name}</div>
-                {/* <div>{category.products}</div> */}
-              </>
-            ));
-          }}
-        </Query>
-        <br></br>
-        <br></br>
-        <Query query={testGQL}>
-          {({ loading, error, data }) => {
-            console.log(data);
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error}</p>;
-            return data.currencies.map((currency) => (
-              <>
-                <div>{currency.label}</div>
-                <div>{currency.symbol}</div>
-              </>
-            ));
-          }}
-        </Query>
-        <br></br>
-        <br></br>
-        <Query query={testGQL}>
-          {({ loading, error, data }) => {
-            console.log(data);
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error}</p>;
-            return data.product["name"];
-          }}
-        </Query>
-        <br></br>
-        <br></br>
-        <Query query={testGQL}>
-          {({ loading, error, data }) => {
-            console.log(data);
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error}</p>;
-            return data.product["gallery"];
-          }}
-        </Query>
-        <br></br>
-        <br></br>
-        <Query query={testGQL}>
-          {({ loading, error, data }) => {
-            console.log(data);
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error}</p>;
-            return data.product["category"];
-          }}
-        </Query>
-        <br></br>
-        <br></br>
-        <Query query={testGQL}>
-          {({ loading, error, data }) => {
-            console.log(data);
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error}</p>;
-            return data.product["brand"];
-          }}
-        </Query>
-        <br></br>
-        <br></br>
-        <Query query={testGQL}>
-          {({ loading, error, data }) => {
-            console.log(data);
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error}</p>;
-
-            return data.product["description"];
-
-            // return data.product[""](
-            //   <>
-            //     <div key="{name}">{product.name}</div>
-            //     <div key="{category}">{product.category}</div>
-            //   </>
-            // );
-
-            // return data.product.map((product) => (
-            //   <div key={product.id} value={product.name}></div>
-            // ));
-
-            // return data.product.map((product) => (
-            //   <div key={product.id}>
-            //     <div>{product.name}</div>
-            //     <div>{product.description}</div>
-            //   </div>
-            // ));
-          }}
-        </Query>
-        <section className="App">
-          <Header />
-
-          <Category />
-          <header className="App-header">
-            <p>dispersed functionalities below </p>
-          </header>
-        </section>
-        <section className="MainFrame">
-          <MainFrameClass type="Zen" counter={0} limit={LIMIT_IMPORT} />
-          <ButtonClass
-            type="functionality"
-            functionality={BUTTON_FUNCTIONALITY}
-          />
-        </section>
-      </main>
+          <Route path="/cart" element={"<CartPage />"} />
+          {/* <Route path="/:productId" element={<ProductSingleView />} />
+        <Route path="*" element={<NotFoundPage />} /> */}
+        </Routes>
+      </>
     );
   }
 }
 
 export default App;
+
+// const dataExampleObject = {
+//   categories: [
+//     {__typeName: "Category", name: "all", id: {true: "all"}},
+//   ]
+// }
+
+// dataExampleObject.categories[0].id.true
+
+{
+  /* {this.state.categories.map((category) => (
+                <> */
+}
+{
+  /* <li {...currency.symbol}>{currency.label}</li>
+                  <li className="currency-counter">{currency.symbol}</li> */
+}
+{
+  /* <li>{category.name}</li> */
+}
+{
+  /* <li>{category.products}</li> */
+}
+{
+  /* {category}[key].map((product)) => {
+                    return(
+                    <li key={product.id}>{product.description}</li>*/
+}

@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+/* @counter-style {
+  .space-counter {
+    list-style-type: space-counter;
+  }
+} */
+
+.currency-switcher {
+  list-style-type: "\1F44D";
+  /* background-color: aquamarine; */
+}
+
+/* .currency-counter li::marker {
+  content: {currency.symbol};
+} */
+
+li {
+  list-style: square;
+}
